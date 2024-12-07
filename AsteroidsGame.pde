@@ -1,11 +1,20 @@
 Spaceship bob = new Spaceship();
 Star [] jim = new Star[200];
+ArrayList <Asteroid> Meeb = new ArrayList<Asteroid>();
 public void setup() 
 {
   size(400,400);//your code here
   for(int i = 0; i < jim.length;i++){
     jim[i] = new Star();
   }
+  Meeb.add(new Asteroid());
+  Meeb.add(new Asteroid());
+  Meeb.add(new Asteroid());
+  Meeb.add(new Asteroid());
+  Meeb.add(new Asteroid());
+  Meeb.add(new Asteroid());
+  Meeb.add(new Asteroid());
+  Meeb.add(new Asteroid());
 }
 public void draw() 
 {
@@ -14,11 +23,20 @@ public void draw()
     for(int i = 0; i < jim.length;i++){
     jim[i].show();
   }
+  for(int i = 0; i < Meeb.size(); i++){
+   Meeb.get(i).show();
+   Meeb.get(i).move();
+   float d =(dist((float)bob.getX(),(float)bob.getY(), (float)Meeb.get(i).getX(),(float) Meeb.get(i).getY()));
+   if(d < 10)
+     Meeb.remove(i);
+  }
 }
 public void keyPressed(){
- if(key == '1'){
+ if(key == 'w'){
    bob.move();
-   bob.accelerate(2.0);
+ }
+ if(key == '1'){
+     bob.accelerate(2.0); 
  }
   if(key == '2'){
    bob.turn(30.0);
@@ -27,7 +45,6 @@ public void keyPressed(){
   bob.turn(-30.0); 
  }
  if(key == '4'){
-  bob.move();
   bob.accelerate(-2.0); 
  }
  if(key == '5'){
