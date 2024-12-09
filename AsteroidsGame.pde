@@ -55,4 +55,7 @@ public void keyPressed(){
   bob.setCenterY((int)(Math.random()*400));
   bob.turn(((Math.random()*360)));
  }
+ if(key == 'a'){
+  Meeb.add(new Asteroid()); 
+ }
 }
